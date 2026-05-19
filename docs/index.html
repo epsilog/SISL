@@ -25,6 +25,13 @@
       box-sizing: border-box;
     }
 
+    html,
+    body {
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
     body {
       margin: 0;
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
@@ -42,14 +49,15 @@
     }
 
     .page {
-      width: min(960px, calc(100% - 32px));
+      width: min(960px, 100%);
       margin: 0 auto;
-      padding: 72px 0 56px;
+      padding: 72px 16px 56px;
     }
 
     .hero {
       text-align: center;
-      padding: 56px 24px 44px;
+      padding: 56px 8px 44px;
+      min-width: 0;
     }
 
     .badge {
@@ -64,13 +72,16 @@
       color: var(--muted);
       font-size: 0.92rem;
       font-weight: 600;
+      max-width: 100%;
     }
 
     h1 {
       margin: 0;
-      font-size: clamp(2.15rem, 5vw, 4.25rem);
+      font-size: clamp(2.05rem, 10vw, 4.25rem);
       line-height: 1.08;
       letter-spacing: -0.045em;
+      overflow-wrap: anywhere;
+      word-break: keep-all;
     }
 
     .subtitle {
@@ -78,12 +89,14 @@
       margin: 22px auto 0;
       color: var(--muted);
       font-size: clamp(1.02rem, 2vw, 1.22rem);
+      overflow-wrap: anywhere;
     }
 
     .authors {
       margin: 18px auto 0;
       color: var(--muted);
       font-size: 1rem;
+      overflow-wrap: anywhere;
     }
 
     .buttons {
@@ -92,6 +105,7 @@
       justify-content: center;
       gap: 12px;
       margin-top: 30px;
+      min-width: 0;
     }
 
     .button {
@@ -106,6 +120,8 @@
       color: var(--text);
       font-weight: 700;
       transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+      max-width: 100%;
+      overflow-wrap: anywhere;
     }
 
     .button:hover {
@@ -125,9 +141,10 @@
 
     .grid {
       display: grid;
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
       gap: 18px;
       margin-top: 20px;
+      min-width: 0;
     }
 
     section {
@@ -137,6 +154,8 @@
       background: rgba(255, 255, 255, 0.82);
       box-shadow: 0 18px 45px rgba(15, 23, 42, 0.06);
       backdrop-filter: blur(12px);
+      min-width: 0;
+      max-width: 100%;
     }
 
     h2 {
@@ -151,14 +170,18 @@
     }
 
     pre {
+      width: 100%;
+      max-width: 100%;
       margin: 0;
       padding: 18px;
       overflow-x: auto;
       border-radius: 16px;
       background: var(--code-bg);
       color: var(--code-text);
-      font-size: 0.92rem;
+      font-size: 0.88rem;
       line-height: 1.55;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
     }
 
     .citation-header {
@@ -167,6 +190,7 @@
       justify-content: space-between;
       gap: 12px;
       margin-bottom: 14px;
+      min-width: 0;
     }
 
     .copy-button {
@@ -177,6 +201,7 @@
       padding: 8px 12px;
       color: var(--muted);
       font-weight: 700;
+      flex: 0 0 auto;
     }
 
     .copy-button:hover {
@@ -188,20 +213,20 @@
       text-align: center;
       color: var(--muted);
       font-size: 0.92rem;
+      overflow-wrap: anywhere;
     }
 
     @media (max-width: 640px) {
       .page {
-        width: min(100% - 20px, 960px);
-        padding-top: 36px;
+        padding: 36px 10px 42px;
       }
 
       .hero {
-        padding: 36px 10px 28px;
+        padding: 34px 0 28px;
       }
 
       section {
-        padding: 22px;
+        padding: 20px;
         border-radius: 18px;
       }
 
@@ -212,6 +237,11 @@
       .citation-header {
         align-items: flex-start;
         flex-direction: column;
+      }
+
+      pre {
+        padding: 14px;
+        font-size: 0.78rem;
       }
     }
   </style>
